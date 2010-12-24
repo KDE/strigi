@@ -3,17 +3,17 @@
 	url = http://anongit.kde.org/strigiutils
 
 [submodule "strigidaemon"]
-        path = strigidaemon
-        url = http://anongit.kde.org/strigidaemon
+	path = strigidaemon
+	url = http://anongit.kde.org/strigidaemon
 
 [submodule "libstreams"]
-        path = libstreams
-        url = http://anongit.kde.org/libstreams
+	path = libstreams
+	url = http://anongit.kde.org/libstreams
 
 [submodule "libstreamanalyzer"]
-        path = libstreamanalyzer
-        url = http://anongit.kde.org/libstreamanalyzer
+	path = libstreamanalyzer
+	url = http://anongit.kde.org/libstreamanalyzer
 
 [submodule "strigiclient"]
-        path = strigiclient
-        url = http://anongit.kde.org/strigiclient
+	path = strigiclient
+	url = http://anongit.kde.org/strigiclient
