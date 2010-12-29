@@ -17,10 +17,31 @@ if(MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Zc:wchar_t-")
 endif(MSVC)
 
-add_subdirectory(libstreams)
-add_subdirectory(libstreamanalyzer)
-add_subdirectory(strigiutils)
-if(NOT MSVC)
-  add_subdirectory(strigidaemon)
-  add_subdirectory(strigiclient)
-endif(NOT MSVC)
+macro(check_subdir _subDirectory)
+  if(NOT EXISTS "${strigi_SOURCE_DIR}/${_subDirectory}/CMakeLists.txt")
+    message(STATUS "No CMakeLists.txt found in ${_subDirectory}")
+    set(showFatalError 1)
+  endif()
+endmacro()
+
+check_subdir(libstreams)
+check_subdir(libstreamanalyzer)
+check_subdir(strigiutils)
+check_subdir(strigidaemon)
+check_subdir(strigiclient)
+
+if(showFatalError)
+  message(FATAL_ERROR "No CMakeLists.txt was found in one of your sources subdirectory\n"
+	              "Make sure you downloaded the sub-modules files using:\n"
+		      "  git submodule update --init"
+         )
+else()
+  add_subdirectory(libstreams)
+  add_subdirectory(libstreamanalyzer)
+  add_subdirectory(strigiutils)
+  if(NOT MSVC)
+    add_subdirectory(strigidaemon)
+    add_subdirectory(strigiclient)
+  endif(NOT MSVC)
+endif()
+
