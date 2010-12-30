@@ -8,19 +8,31 @@ cmake_minimum_required(VERSION 2.6)
 # for testing to work in cmake, this command must be called in the root src dir
 enable_testing()
 
-if(MSVC)
-  add_definitions(-wd4251)
-  add_definitions(-wd4355)
-  add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
-  add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
-  add_definitions(-D_USE_MATH_DEFINES)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Zc:wchar_t-")
-endif(MSVC)
+option(STRIGI_SYNC_SUBMODULES "Try to update the Strigi submodules automatically. Note that the update may fail if you have pending changes in one of the submodules." FALSE)
+
+if(STRIGI_SYNC_SUBMODULES)
+  find_program(GIT_EXECUTABLE NAMES git)
+  if(NOT GIT_EXECUTABLE)
+    message(FATAL_ERROR "Could not find git. Aborting.")
+  endif()
+endif()
 
 macro(check_subdir _subDirectory)
   if(NOT EXISTS "${strigi_SOURCE_DIR}/${_subDirectory}/CMakeLists.txt")
     message(STATUS "No CMakeLists.txt found in ${_subDirectory}")
-    set(showFatalError 1)
+    if(STRIGI_SYNC_SUBMODULES)
+      message(STATUS "Trying to download the ${_subDirectory} submodule")
+      execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init -- ${_subDirectory}
+                      WORKING_DIRECTORY ${strigi_SOURCE_DIR})
+    endif()
+  else()
+    if(STRIGI_SYNC_SUBMODULES)
+      message(STATUS "Trying to update the ${_subDirectory} submodule")
+      execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --rebase -- ${_subDirectory}
+                      WORKING_DIRECTORY ${strigi_SOURCE_DIR})
+    else()
+      set(showError 1)
+    endif()
   endif()
 endmacro()
 
@@ -30,10 +42,19 @@ check_subdir(strigiutils)
 check_subdir(strigidaemon)
 check_subdir(strigiclient)
 
-if(showFatalError)
+if(MSVC)
+  add_definitions(-wd4251)
+  add_definitions(-wd4355)
+  add_definitions(-D_CRT_SECURE_NO_DEPRECATE)
+  add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
+  add_definitions(-D_USE_MATH_DEFINES)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Zc:wchar_t-")
+endif(MSVC)
+
+if(showError)
   message(FATAL_ERROR "No CMakeLists.txt was found in one of your sources subdirectory\n"
-	              "Make sure you downloaded the sub-modules files using:\n"
-		      "  git submodule update --init"
+                      "Make sure you downloaded the sub-modules files using:\n"
+                      "  git submodule update --init"
          )
 else()
   add_subdirectory(libstreams)
