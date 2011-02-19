@@ -11,7 +11,10 @@ enable_testing()
 option(STRIGI_SYNC_SUBMODULES "Try to update the Strigi submodules automatically. Note that the update may fail if you have pending changes in one of the submodules." FALSE)
 
 if(STRIGI_SYNC_SUBMODULES)
-  find_program(GIT_EXECUTABLE NAMES git)
+  if (NOT GIT_EXECUTABLE)
+  # Make it possible to override GIT_EXECUTABLE
+    find_program(GIT_EXECUTABLE NAMES git)
+  endif()
   if(NOT GIT_EXECUTABLE)
     message(FATAL_ERROR "Could not find git. Aborting.")
   endif()
