@@ -28,6 +28,8 @@ macro(check_subdir _subDirectory)
       message(STATUS "Trying to download the ${_subDirectory} submodule")
       execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init -- ${_subDirectory}
                       WORKING_DIRECTORY ${strigi_SOURCE_DIR})
+    else()
+      set(showError 1)
     endif()
   else()
     if(STRIGI_SYNC_SUBMODULES)
@@ -35,8 +37,6 @@ macro(check_subdir _subDirectory)
       execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --rebase -- ${_subDirectory}
                       WORKING_DIRECTORY ${strigi_SOURCE_DIR})
     endif()
-  else()
-    set(showError 1)
   endif()
 endmacro()
 
