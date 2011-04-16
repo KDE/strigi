@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/sh
 
 # This script will retrieve the strigi submodules for you
 # Please note that unless you edit .gitmodules the submodules will be
