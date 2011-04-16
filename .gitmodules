@@ -1,19 +1,19 @@
 [submodule "strigiutils"]
 	path = strigiutils
-	url = http://anongit.kde.org/strigiutils
+	url = git://anongit.kde.org/strigiutils
 
 [submodule "strigidaemon"]
 	path = strigidaemon
-	url = http://anongit.kde.org/strigidaemon
+	url = git://anongit.kde.org/strigidaemon
 
 [submodule "libstreams"]
 	path = libstreams
-	url = http://anongit.kde.org/libstreams
+	url = git://anongit.kde.org/libstreams
 
 [submodule "libstreamanalyzer"]
 	path = libstreamanalyzer
-	url = http://anongit.kde.org/libstreamanalyzer
+	url = git://anongit.kde.org/libstreamanalyzer
 
 [submodule "strigiclient"]
 	path = strigiclient
-	url = http://anongit.kde.org/strigiclient
+	url = git://anongit.kde.org/strigiclient
