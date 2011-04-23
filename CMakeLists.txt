@@ -61,12 +61,12 @@ if(showError)
                       "  git submodule update --init"
          )
 else()
-  add_subdirectory(libstreams)
-  add_subdirectory(libstreamanalyzer)
+  add_subdirectory(libstreams) # Must be first
+  add_subdirectory(libstreamanalyzer) # Must be second
   add_subdirectory(strigiutils)
-  add_subdirectory(strigiclient)
   if(NOT WIN32)
     add_subdirectory(strigidaemon)
   endif(NOT WIN32)
+  add_subdirectory(strigiclient) # Must be AFTER strigidaemon
 endif()
 
