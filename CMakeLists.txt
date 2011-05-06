@@ -66,7 +66,7 @@ else()
   add_subdirectory(strigiutils)
   if(NOT WIN32)
     add_subdirectory(strigidaemon)
-  endif(NOT WIN32)
-  add_subdirectory(strigiclient) # Must be AFTER strigidaemon
+    add_subdirectory(strigiclient) # Must be AFTER strigidaemon
+  endif()
 endif()
 
