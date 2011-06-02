@@ -1,3 +1,14 @@
+0.7.4
+ - Disable building strigidaemon and strigiclient on windows
+ - Support more feature of Strigi Query in the CLucene backend. (Tobias Koenig)
+ - Fix premature EOF condition in PDF parser. (Tuukka Verho)
+ - Make discovering of invalid characters in checkHeader more compliant to RFC822. (Tobias Koenig)
+ - Improvements to movie analysers that use ffmpeg.
+ - Fix a bug where width and height of certain JPG files are not shown. (Szczepan Hołyszewski)
+ - Fixes to libstreams to avoid crashes. (Evgeny Egorochkin)
+ - Improved Nepomuk compliance. (Evgeny Egorochkin)
+ - Faster reading of streams with SkippingFileInputStream and MMapFileInputStream. (Jos van den Oever)
+ - Reorganize Strigi into smaller modules.
 0.7.2
  - Improve cpp analyzer speed and output
  - Fix crash due to deep nesting of calls in pdf analyzer
