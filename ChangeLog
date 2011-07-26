@@ -1,3 +1,9 @@
+0.7.6 (2011-07-26)
+ - Fix build with clucene 2.3 (Alex Merry)
+ - Use the deprecated function av_metadata_get for libffmpeg (Tirtha Chatterjee)
+ - Improved child indexing (Sebastian Trueg)
+ - Convert the DateTime field in EXIF data to a time_t value. (Sebastian Trueg)
+ - Move DigestEventAnalyzer to a plugin. (Jos van den Oever)
 0.7.5
  - Synchronize the modules. In 0.7.4, the modules were not synchronized.
 0.7.4
