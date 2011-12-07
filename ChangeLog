@@ -1,3 +1,12 @@
+0.7.7 (2011-12-07)
+ - Many nepomuk field name fixes (Sebastian Trueg, Vishesh Handa)
+ - More accurate file format check for tar files (Evgeny Egorochkin, Jos van
+ den Oever)
+ - Better checking of bounds in OLE files. (Jos van den Oever)
+ - Increase performance of default file input stream. (Jos van den Oever)
+ - Check for surrogate pairs in UTF-8 strings. (Jos van den Oever)
+ - Improve ID3 analyzer: skip zero padding before mp3 stream to handle typical LAME output, implement unsynchronization flag handling (Evgeny Egorochkin)
+ - Properly finish child indexing in all analyzers. (Sebastian Trueg)
 0.7.6 (2011-07-26)
  - Fix build with clucene 2.3 (Alex Merry)
  - Use the deprecated function av_metadata_get for libffmpeg (Tirtha Chatterjee)
