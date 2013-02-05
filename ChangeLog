@@ -1,3 +1,30 @@
+0.7.8 (2013-02-05)
+ - Fix xpm and xbm index. (Weng Xuetian)
+ - Extract tracknumber and track count from a value like "03/16". (Sebastian
+Trueg)
+ - Fixed indexing of m3u files. (Sebastian Trueg)
+ - Fix FLAC Files: Remove addtional 'db' in replaygain (Vishesh Handa)
+ - Fix: flac analizer was importing only one artist tag. (Ignacio Serantes)
+ - Fix: non numeric genres in id3 v2 mp3 are ignored. (Ignacio Serantes)
+ - Fix parsing of genre field in id3v2 tags(Sune Vuorela)
+ - Change: TPE2 tag it's used as nmm:albumArtist instead as nmm:performer in
+ID3
+ analyzer. (Ignacio Serantes)
+ - Change: added support to TRACKTOTAL tag as an equivalent to TRACKCOUNT in
+ FLA
+ C analyzer. (Ignacio Serantes)
+ - C++11 fixes (Raphael Kubo da Costa)
+ - Let the strigi ffmpeg plugin compile on modern ffmpeg versions. (Simeon
+ Bird)
+ - Simeon Bird (Let the ffmpeg analyser deal with files with have track
+ numbers with a / in t
+ hem)
+ - Remove dependency on boost. (Jos van den Oever)
+ - Use GNUInstallDirs in order to install into lib64 automatically (David
+ Faure)
+ - Install a version file for the CMake config module (Christophe Giboudeaux)
+ - Allow the Strigi submodules to be installed in custom prefixes. (Christophe
+ Giboudeaux)
 0.7.7 (2011-12-07)
  - Many nepomuk field name fixes (Sebastian Trueg, Vishesh Handa)
  - More accurate file format check for tar files (Evgeny Egorochkin, Jos van
