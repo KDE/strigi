@@ -1,7 +1,7 @@
 #! /bin/bash
 # script to create a release tarball for strigi
 # this is needed since the project is split up in separate git moduls
-TAG=0.7.6
+TAG=0.7.8
 git archive --format=tar --prefix=strigi-$TAG/ -o strigi-$TAG.tar v$TAG
 for f in libstreams libstreamanalyzer strigidaemon strigiclient strigiutils; do
   cd $f
